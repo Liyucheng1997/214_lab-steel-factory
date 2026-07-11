@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数字炼钢厂 3D · Three.js 厂区模型</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="scene"></canvas>
+
+    <!-- 顶部标题栏 -->
+    <div class="hud hud-top">
+      <div class="title">
+        <h1>🏭 数字炼钢厂 3D</h1>
+        <p>长流程（高炉—转炉）· 拖拽旋转 / 滚轮缩放 / 点击建筑看详情</p>
+      </div>
+      <button id="btn-start">▶ 开始一炉生产</button>
+    </div>
+
+    <!-- 底部状态栏：钢水状态 + 工序进度 -->
+    <div class="hud hud-bottom">
+      <div class="sim-status" id="sim-status">点击「开始一炉生产」，跟随发光的钢包走完从高炉到钢卷的全过程。</div>
+      <div class="heat-state" id="heat-state">
+        <div class="gauge"><span class="g-label">温度</span><span class="g-value" id="g-temp">—</span></div>
+        <div class="gauge"><span class="g-label">碳 C</span><span class="g-value" id="g-c">—</span></div>
+        <div class="gauge"><span class="g-label">硫 S</span><span class="g-value" id="g-s">—</span></div>
+        <div class="gauge"><span class="g-label">磷 P</span><span class="g-value" id="g-p">—</span></div>
+        <div class="gauge"><span class="g-label">形态</span><span class="g-value" id="g-form">—</span></div>
+      </div>
+      <div class="trend" id="trend"></div>
+    </div>
+
+    <!-- 工序详情卡（点击建筑 / 模拟经过时显示） -->
+    <aside class="hud" id="detail-card" hidden>
+      <button class="close" id="btn-close">✕</button>
+      <div id="detail"></div>
+    </aside>
+  </div>
+
+  <script src="data.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
