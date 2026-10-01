@@ -21,15 +21,21 @@
     <!-- 顶部标题栏 -->
     <div class="hud hud-top">
       <div class="title">
-        <h1>🏭 数字炼钢厂 3D</h1>
-        <p>长流程（高炉—转炉）· 拖拽旋转 / 滚轮缩放 / 点击建筑看详情</p>
+        <h1>数字炼钢厂 3D</h1>
+        <p>长流程（高炉—转炉）· 拖拽旋转 / 滚轮缩放 / 右键平移 / 点击建筑看剖切与详情</p>
       </div>
-      <button id="btn-start">▶ 开始一炉生产</button>
+      <div class="tools">
+        <button class="tool" id="btn-home" title="回到全景">⌂ 全景</button>
+        <button class="tool" id="btn-cut" title="隐藏所有厂房外壳，查看内部设备">◫ 剖切</button>
+        <button class="tool on" id="btn-label" title="显示/隐藏标注">🏷 标注</button>
+        <button class="tool" id="btn-night" title="切换昼夜">🌙 夜景</button>
+        <button id="btn-start">▶ 开始一炉生产</button>
+      </div>
     </div>
 
     <!-- 底部状态栏：钢水状态 + 工序进度 -->
     <div class="hud hud-bottom">
-      <div class="sim-status" id="sim-status">点击「开始一炉生产」，跟随发光的钢包走完从高炉到钢卷的全过程。</div>
+      <div class="sim-status" id="sim-status">点击「开始一炉生产」，跟随铁水罐 → 钢包 → 板坯 → 钢卷走完从高炉到热轧的全过程。</div>
       <div class="heat-state" id="heat-state">
         <div class="gauge"><span class="g-label">温度</span><span class="g-value" id="g-temp">—</span></div>
         <div class="gauge"><span class="g-label">碳 C</span><span class="g-value" id="g-c">—</span></div>
@@ -45,6 +51,12 @@
       <button class="close" id="btn-close">✕</button>
       <div id="detail"></div>
     </aside>
+
+    <!-- 加载遮罩 -->
+    <div id="loading">
+      <div class="spinner"></div>
+      <div id="loading-text">加载 Three.js …</div>
+    </div>
   </div>
 
   <script src="data.js"></script>
